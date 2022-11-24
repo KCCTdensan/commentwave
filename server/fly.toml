@@ -1,0 +1,41 @@
+app = "com-server"
+
+kill_signal = "SIGINT"
+kill_timeout = 5
+
+[deploy]
+  release_command = "npx prisma migrate deploy"
+
+[mounts]
+  source = "data"
+  destination = "/data"
+
+[[services]]
+  processes = ["app"]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+    force_https = true
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"
+
+  [[services.http_checks]]
+    interval = "10s"
+    grace_period = "5s"
+    method = "get"
+    path = "/"
+    protocol = "http"
+    timeout = "2s"
+    tls_skip_verify = false
+    [services.http_checks.headers]

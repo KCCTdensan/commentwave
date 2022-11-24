@@ -5,5 +5,6 @@
 To deploy:
 
 ```
+% cd server
 % fly deploy
 ```
