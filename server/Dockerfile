@@ -1,4 +1,4 @@
-FROM node:alpine AS base
+FROM node:lts-alpine AS base
 
 ENV NODE_ENV production
 
@@ -24,10 +24,11 @@ ENV NODE_ENV="production"
 
 WORKDIR /app
 
+COPY --from=build /app/package.json /app/package.json
 COPY --from=build /app/node_modules /app/node_modules
 COPY --from=build /app/build /app/build
 COPY --from=build /app/public /app/public
-COPY --from=build /app/package.json /app/package.json
+COPY --from=build /app/server /app/server
 COPY --from=build /app/prisma /app/prisma
 
 CMD ["npm", "start"]
