@@ -1,8 +1,10 @@
 {
   "dependencies": {
+    "@headlessui/react": "^1.7.4",
     "@remix-run/express": "^1.7.6",
     "@remix-run/node": "^1.7.6",
     "@remix-run/react": "^1.7.6",
+    "@socket.io/redis-adapter": "^7.2.0",
     "compression": "^1.7.4",
     "cross-env": "^7.0.3",
     "express": "^4.18.2",
@@ -10,6 +12,9 @@
     "morgan": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-twemoji": "^0.5.0",
+    "redis": "^4.5.1",
+    "sanitize-html": "^2.7.3",
     "socket.io": "^4.5.4",
     "socket.io-client": "^4.5.4",
     "ts-node": "^10.9.1"
@@ -24,6 +29,7 @@
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
+    "@types/sanitize-html": "^2.6.2",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.28.0",
     "nodemon": "^2.0.20",
@@ -36,6 +42,11 @@
   "engines": {
     "node": ">=14"
   },
+  "nodemonConfig": {
+    "watch": "server",
+    "ext": "ts",
+    "exec": "ts-node"
+  },
   "private": true,
   "scripts": {
     "build": "run-s build:*",
@@ -43,9 +54,10 @@
     "build:remix": "remix build",
     "dev": "run-s generate:css build:remix && run-p dev:*",
     "dev:css": "npm run generate:css -- --watch",
-    "dev:node": "cross-env NODE_ENV=development nodemon --exec ts-node --watch server server",
+    "dev:node": "cross-env NODE_ENV=development nodemon server",
     "dev:remix": "remix watch",
-    "generate:css": "tailwindcss -o app/styles/tailwind.css",
+    "dev:studio": "prisma studio",
+    "generate:css": "tailwindcss -i app/styles/main.css -o app/styles/tailwind.css",
     "lint": "eslint --cache --cache-location .cache/eslint .",
     "start": "cross-env NODE_ENV=production ts-node --transpile-only server"
   },

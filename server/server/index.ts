@@ -1,30 +1,19 @@
-import path from "node:path"
 import { createServer } from "node:http"
-
+import { createRequire } from "node:module"
+import path from "node:path"
+import { createRequestHandler } from "@remix-run/express"
 import express from "express"
-import { Server } from "socket.io"
 import compression from "compression"
 import morgan from "morgan"
-import { createRequestHandler } from "@remix-run/express"
+import { initSocket } from "./socket"
 
 const MODE = process.env.NODE_ENV
 const BUILD_DIR = path.join(process.cwd(), "build")
 const PORT = process.env.PORT || 3000
 
 const app = express()
-const httpServer = createServer(app)
-const io = new Server(httpServer)
-
-io.on("connection", socket => {
-  console.log(socket.id, "connected")
-
-  socket.emit("confirmation", "connected!")
-
-  socket.on("event", data => {
-    console.log(socket.id, data)
-    socket.emit("event", "pong")
-  })
-})
+const server = createServer(app)
+initSocket(server)
 
 app.use(compression())
 app.use(morgan("tiny"))
@@ -52,6 +41,6 @@ app.all(
       }
 )
 
-httpServer.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`)
 })
