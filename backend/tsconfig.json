@@ -2,14 +2,10 @@
   "compilerOptions": {
     "target": "esnext",
     "lib": ["esnext"],
-    // "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "module": "esnext",
+    "moduleResolution": "node",
     "strict": true,
     "noEmit": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["src/*"]
-    }
-  },
-  "include": ["**/*.ts"]
+    "baseUrl": "."
+  }
 }
