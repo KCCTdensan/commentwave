@@ -1,7 +1,7 @@
 import { FastifyPluginAsync } from "fastify"
 
-import { filter } from "../../utils.js"
-import { getRoomWithMsgs } from "../../models/coms.js"
+import { filter } from "../../utils"
+import { getRoomWithMsgs } from "../../models/coms"
 
 const comsRoute: FastifyPluginAsync = async fastify => {
   fastify.get<{ Params: { id: number } }>("/room/:id", async (req, reply) => {

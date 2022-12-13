@@ -7,7 +7,7 @@ import fastifyStatic from "@fastify/static"
 import fastifyIO from "fastify-socket.io"
 
 // todo: いい感じにする
-import comsRoute from "./routes/coms/index.js"
+import comsRoute from "./routes/coms"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)

@@ -1,5 +1,5 @@
 import { Prisma } from "@prisma/client"
-import { prisma } from "../db.js"
+import { prisma } from "../db"
 
 export async function getRoom(where: Prisma.ComsRoomWhereUniqueInput) {
   return prisma.comsRoom.findUnique({ where })

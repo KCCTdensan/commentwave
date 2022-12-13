@@ -5,7 +5,14 @@
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
-    "noEmit": true,
-    "baseUrl": "."
+
+    // https://github.com/TypeStrong/ts-node/pull/1585
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "ts-node": {
+    "swc": true
   }
 }
