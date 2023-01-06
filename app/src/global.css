@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+
+html,
+body,
+#__next {
+  @apply h-full m-0;
+}
+
+@tailwind utilities;
