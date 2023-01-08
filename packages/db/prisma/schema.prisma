@@ -1,0 +1,51 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  passwd  String
+  iconUrl String   @default("https://d3bu.net/icon.png")
+  active  Boolean  @default(false)
+  created DateTime @default(now())
+
+  rooms Room[]
+}
+
+model Room {
+  id         String    @id @default(uuid())
+  name       String?
+  open       DateTime?
+  close      DateTime?
+  lastBackup DateTime?
+  archive    Boolean   @default(false)
+
+  owner    User      @relation(fields: [ownerId], references: [id])
+  ownerId  Int
+  messages RoomMsg[]
+}
+
+model RoomMsg {
+  id      Int      @id @default(autoincrement())
+  text    String
+  author  String
+  created DateTime @default(now())
+
+  room   Room           @relation(fields: [roomId], references: [id])
+  roomId String
+  reacts MessageReact[]
+}
+
+model MessageReact {
+  id    Int    @id @default(autoincrement())
+  react String
+
+  message   RoomMsg @relation(fields: [messageId], references: [id])
+  messageId Int
+}
