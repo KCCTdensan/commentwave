@@ -1,0 +1,7 @@
+{
+  "name": "assets",
+  "files": [
+    "./img"
+  ],
+  "private": true
+}

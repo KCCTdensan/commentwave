@@ -1,4 +1,5 @@
 import CenterLayout from "~/components/CenterLayout"
+import CommonHeader from "~/components/CommonHeader"
 
 export default function Index() {
   return (

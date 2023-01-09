@@ -1,10 +1,10 @@
 import { GetServerSideProps } from "next"
 import { useRouter } from "next/router"
-import { apiBase } from "~/constants"
 
 import Meta from "~/components/Meta"
-import RoomLayout from "~/components/RoomLayout"
 import RoomHeader from "~/components/RoomHeader"
+import RoomLayout from "~/components/RoomLayout"
+import { apiBase } from "~/constants"
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const { id } = context.query

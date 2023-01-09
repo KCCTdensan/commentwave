@@ -1,0 +1,10 @@
+{
+  "name": "conf",
+  "exports": {
+    "./prettierrc": "./prettierrc.json"
+  },
+  "files": [
+    "./files"
+  ],
+  "private": true
+}

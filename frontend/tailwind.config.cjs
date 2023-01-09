@@ -4,7 +4,16 @@ module.exports = {
     "src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: ["var(--f-inter)"],
+        zkgn: ["var(--f-zkgn)"],
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-radix")({
+      variantPrefix: "rdx",
+    }),
+  ],
 }

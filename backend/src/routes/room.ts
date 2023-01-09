@@ -39,6 +39,8 @@ const root: FastifyPluginAsync = async (fastify, opts) => {
   })
 
   fastify.get("/:id/sock", { websocket: true }, (conn, req) => {
+    const state = {}
+
     conn.socket.on("message", buf => {
       const data = JSON.parse(buf.toString())
     })

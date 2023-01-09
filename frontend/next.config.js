@@ -1,6 +1,6 @@
-import { apiBase } from "./src/constants.js"
+const { apiBase } = require("./src/constants.js")
 
-export default {
+module.exports = {
   reactStrictMode: true,
   redirects: async () => [
     {

@@ -5,27 +5,28 @@
     "@fastify/passport": "2.2.0",
     "@fastify/secure-session": "5.3.0",
     "@fastify/static": "6.6.0",
-    "@fastify/websocket": "7.1.1",
+    "@fastify/websocket": "7.1.2",
     "db": "workspace:*",
     "fastify": "4.11.0",
     "mailgun.js": "8.0.6",
     "pubsub-js": "1.9.4"
   },
   "devDependencies": {
-    "@types/node": "18.11.18",
+    "@types/node": "~18.11.18",
     "@types/passport": "1.0.11",
     "@types/ws": "8.5.4",
     "nodemon": "2.0.20",
-    "npm-run-all": "4.1.5",
-    "tsup": "6.5.0",
-    "typescript": "4.9.4"
+    "npm-run-all": "~4.1.5",
+    "tsup": "~6.5.0",
+    "typescript": "~4.9.4"
   },
   "private": true,
   "scripts": {
-    "build": "tsc && tsup-node --minify",
+    "build": "tsup-node --minify",
     "dev": "run-p dev:*",
     "dev:node": "nodemon dist/main",
     "dev:ts": "tsup-node --watch",
+    "lint": "tsc",
     "start": "node dist/main"
   },
   "tsup": {
