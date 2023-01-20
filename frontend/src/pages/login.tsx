@@ -43,7 +43,7 @@ export default function Login() {
           />
           {errors.email && (
             <p className="text-red-500" role="alert">
-              {errors.email?.message}
+              {errors.email.message}
             </p>
           )}
         </div>
@@ -57,7 +57,7 @@ export default function Login() {
           />
           {errors.password && (
             <p className="text-red-500" role="alert">
-              {errors.password?.message}
+              {errors.password.message}
             </p>
           )}
         </div>

@@ -24,7 +24,10 @@ const registerSchema = z
     confirm: z
       .string()
       .nonempty({ message: "パスワードをもう一度入力してください" }),
-    terms: z.boolean(),
+    terms: z
+      .boolean()
+      // todo: 利用規約のチェック
+      ,
   })
   .refine(data => data.password === data.confirm, {
     message: "パスワードが一致しません",
@@ -58,7 +61,7 @@ export default function Register() {
           />
           {errors.email && (
             <p className="text-red-500" role="alert">
-              {errors.email?.message}
+              {errors.email.message}
             </p>
           )}
         </div>
@@ -72,7 +75,7 @@ export default function Register() {
           />
           {errors.password && (
             <p className="text-red-500" role="alert">
-              {errors.password?.message}
+              {errors.password.message}
             </p>
           )}
         </div>
@@ -86,7 +89,7 @@ export default function Register() {
           />
           {errors.confirm && (
             <p className="text-red-500" role="alert">
-              {errors.confirm?.message}
+              {errors.confirm.message}
             </p>
           )}
         </div>

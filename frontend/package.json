@@ -4,6 +4,7 @@
     "@hookform/resolvers": "2.9.10",
     "@next/font": "13.1.1",
     "@radix-ui/react-checkbox": "1.0.1",
+    "@radix-ui/react-dropdown-menu": "2.0.1",
     "@radix-ui/react-icons": "1.1.1",
     "assets": "workspace:*",
     "jotai": "1.13.0",
